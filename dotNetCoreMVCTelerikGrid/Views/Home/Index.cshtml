@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model HomeVM
+@foreach (var c in Model.AllCategories)
+{
+    <p><a asp-controller="Pies" asp-action="PieList" asp-route-category="@c.CategoryName">@c.CategoryName</a></p>
 }
-@model  
-@foreach()
+<a asp-controller="Pies" asp-action="PieList" asp-route-category="">All pies</a></p>
