@@ -2,5 +2,5 @@
 
 @foreach(var p in Model.Pies)
 {
-    <p>@p.Name</p>
+    <partial name="_PieCard" model="p" />
 }

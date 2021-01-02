@@ -16,12 +16,8 @@ namespace dotNetCoreMVCTelerikGrid.Controllers
         public PiesController(IPieRepo pieRepo) => _pieRepo = pieRepo;
         public ViewResult PieList (string category)
         {
-            IEnumerable<Pie> pies;
-            pies = category == null ? _pieRepo.GetAllPies : _pieRepo.GetAllPies.Where(x => x.Category.CategoryName == category);
-            var vm = new PieVM
-            {
-                Pies = pies
-            };
+            var pies = category == null ? _pieRepo.GetAllPies : _pieRepo.GetPiesByCategory(category);
+            var vm = new PieVM { Pies = pies };
             return View(vm);
         }
     }

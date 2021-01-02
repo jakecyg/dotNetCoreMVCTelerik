@@ -1,0 +1,44 @@
+﻿@model dotNetCoreMVCTelerikGrid.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+    <h4>Category</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" id="CategoryForm">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="CategoryId" />
+                <div class="form-group">
+                    <label asp-for="CategoryName"></label>
+                    <input asp-for="CategoryName" class="k-textbox" />
+                    <span asp-validation-for="CategoryName" class="text-danger k-invalid-msg" data-for="CategoryName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" class="k-textbox" />
+                    <span asp-validation-for="Description" class="text-danger k-invalid-msg" data-for="Description"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="k-button k-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="k-button">Back to List</a>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#CategoryForm").kendoValidator({
+                // You can define your custom rules here:
+                //rules: {}
+            });
+        })
+    </script>
