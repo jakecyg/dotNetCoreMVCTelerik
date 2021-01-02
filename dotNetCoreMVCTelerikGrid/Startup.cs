@@ -1,7 +1,11 @@
+using dotNetCoreMVCTelerikGrid.Common.Context;
+using dotNetCoreMVCTelerikGrid.Services.Abstraction;
+using dotNetCoreMVCTelerikGrid.Services.Implementation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -35,6 +39,13 @@ namespace dotNetCoreMVCTelerikGrid
 
             // Add Kendo UI services to the services container
             services.AddKendo();
+
+            // Setup connectionstring from appsetting.json file; avaiilable through injected IConfiguration
+            services.AddDbContext<dbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // Support for MVC framework
+            services.AddScoped<IPieRepo, PieRepo>();
+            services.AddScoped<ICategoryRepo, CategoryRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
