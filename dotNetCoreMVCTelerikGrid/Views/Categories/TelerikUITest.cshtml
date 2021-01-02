@@ -1,0 +1,13 @@
+﻿@(Html.Kendo().Grid<dotNetCoreMVCTelerikGrid.Models.Category>
+    ()
+    .Name("grid")
+    .Columns(columns => {
+        columns.Bound(c => c.CategoryId);
+        columns.Bound(c => c.CategoryName);
+        columns.Bound(c => c.Description);
+        columns.Command(command => command.Custom("ViewDetails"));
+    })
+    .DataSource(dataSource => dataSource
+    .Ajax()
+    .Read(read => read.Action("Categories_Read", "Categories"))
+    ))

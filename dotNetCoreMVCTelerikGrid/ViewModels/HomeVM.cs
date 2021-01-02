@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace dotNetCoreMVCTelerikGrid.Services.Abstraction
+namespace dotNetCoreMVCTelerikGrid.ViewModels
 {
-    public interface ICategoryRepo
+    public class HomeVM
     {
-        IEnumerable<Category> GetAllCategories { get; }
+        public IEnumerable<Category> AllCategories { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dotNetCoreMVCTelerikGrid.Services.Abstraction
 {
-    interface IPieRepo
+    public interface IPieRepo
     {
         IEnumerable<Pie> GetAllPies { get; }
         IEnumerable<Pie> GetAllPiesOfTheWeek { get; }
