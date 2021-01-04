@@ -1,0 +1,47 @@
+﻿@model PieVM
+
+<h1>Edit</h1>
+
+<h4>Pie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" id="PieForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="k-textbox" />
+                <span asp-validation-for="Name" class="text-danger k-invalid-msg" data-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="k-textbox" />
+                <span asp-validation-for="Price" class="text-danger k-invalid-msg" data-for="Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShortDesc"></label>
+                <input asp-for="ShortDesc" class="k-textbox" />
+                <span asp-validation-for="ShortDesc" class="text-danger k-invalid-msg" data-for="ShortDesc"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId"></label>
+                <input asp-for="CategoryId" class="k-textbox" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="k-button k-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="PieList" asp-route-categoryId="@Model.CategoryId" class="k-button">Back to List</a>
+</div>
+
+<script>$(document).ready(function () {
+            $("#CategoryForm").kendoValidator({
+                // You can define your custom rules here:
+                //rules: {}
+            });
+        })</script>

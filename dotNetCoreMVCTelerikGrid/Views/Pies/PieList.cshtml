@@ -1,6 +1,11 @@
 ﻿@model PieVM
+<h1>@(Model.Category != null ? Model.Category.CategoryName : "All Pies") <a asp-action="Create" asp-route-categoryId="@Model.CategoryId" class="k-button">Create New</a> </h1>
 
-@foreach(var p in Model.Pies)
+@foreach (var p in Model.Pies)
 {
     <partial name="_PieCard" model="p" />
+    <a asp-action="Edit" asp-route-id="@p.Id" class="k-button k-primary">Edit</a>
+    <a asp-action="Details" asp-route-id="@p.Id" class="k-button">Details</a>
+    <a asp-action="Delete" asp-route-id="@p.Id" class="k-button">Delete</a>
+    <p>==========================</p>
 }

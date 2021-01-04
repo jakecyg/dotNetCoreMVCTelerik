@@ -9,5 +9,6 @@ namespace dotNetCoreMVCTelerikGrid.Services.Abstraction
     public interface ICategoryRepo
     {
         IEnumerable<Category> GetAllCategories { get; }
+        Category GetCategoryById(int id);
     }
 }

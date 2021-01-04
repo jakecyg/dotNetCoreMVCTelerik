@@ -13,31 +13,29 @@ namespace dotNetCoreMVCTelerikGrid.Services.Implementation
     {
         private readonly dbContext _db;
         public PieRepo(dbContext db) => _db = db;
-        public bool CreateCommand(Pie pie)
+        public void CreatePie(Pie pie)
         {
             if (pie == null) throw new ArgumentNullException(nameof(pie));
             _db.Pies.Add(pie);
             var created = _db.SaveChanges();
-            return created > 0;
         }
         public IEnumerable<Pie> GetAllPies => _db.Pies.Include(x => x.Category);
         public IEnumerable<Pie> GetAllPiesOfTheWeek => _db.Pies.Include(x => x.Category).Where(x => x.IsPieOfTheWeek);
         public IEnumerable<Pie> GetPiesByCategory(string category) => _db.Pies.Include(x => x.Category).Where(x => x.Category.CategoryName == category);
-        public Pie GetPieById(int id) => _db.Pies.FirstOrDefault(x => x.Id == id);
-        public bool DeleteCommand(Pie pie)
+        public Pie GetPieById(int? id) => _db.Pies.FirstOrDefault(x => x.Id == id);
+        public void DeletePie(Pie pie)
         {
-            throw new NotImplementedException();
+            if (pie == null) throw new ArgumentNullException(nameof(pie));
+            _db.Pies.Remove(pie);
+            _db.SaveChanges();
         }
-        public bool SaveChanges()
+        public void UpdatePie(Pie pie)
         {
-            throw new NotImplementedException();
+            if (pie == null) throw new ArgumentNullException(nameof(pie));
+            _db.Pies.Update(pie);
+            _db.SaveChanges();
         }
+        public void SaveChanges() => _db.SaveChanges();
 
-        public bool UpdateCommand(Pie pie)
-        {
-            throw new NotImplementedException();
-        }
-
-       
     }
 }
